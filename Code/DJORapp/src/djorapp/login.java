@@ -6,42 +6,29 @@ import java.sql.*;
 import javax.swing.table.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import static java.lang.reflect.Array.set;
 import java.sql.Statement;
+import java.sql.ResultSet;
 /**
  *
  * @author User
  */
 public class login extends javax.swing.JFrame {
-
-    /**
-     * Creates new form login
-     */
     Connection koneksi;
+    Statement stat;
+    ResultSet rs;
+    String sql;
+    
     public login() {
         initComponents();
     }
     
-    public void konekdatabase(){
-try{
-Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-koneksi=DriverManager.getConnection("jdbc:mysql://127.0.0.1/djor?" +
-                "user=root&password=123456789");
-}
-catch (Exception e)
-{
-System.err.println("Exception: "+e.getMessage());
-}
-}
 public void Login(){
     try 
 {
     String hasil ="0";
-    String sql = "Select count(*) as jml from login where username = '"+username_.getText().trim()+"'"+"and password = '"+password_.getText().trim()+"'";
-    stat = koneksi.createStatement()
-    set = statement.executeQuery(sql);
-    set.next();
-    hasil = set.getString("jml");
+    String sql = "SELECT * as jml from login where username = '"+username_.getText().trim()+"'"+"and password = '"+password_.getText().trim()+"'";
+    stat = koneksi.createStatement();
+    rs = stat.executeQuery(sql);
     if (Integer.valueOf(hasil)>0){
         JOptionPane.showMessageDialog(null,"Anda Berhasil Login!!!","Peringatan",JOptionPane.WARNING_MESSAGE);
     new login().setVisible(true);
@@ -167,7 +154,19 @@ public void Login(){
     }//GEN-LAST:event_username_ActionPerformed
 
     private void login_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_ActionPerformed
-       konekdatabase();Login();
+       try {
+            sql = "SELECT * FROM admin WHERE username='"+username_.getText()+"' AND password='"+password_.getText()+"'";
+            rs = stat.executeQuery(sql);
+            if(rs.next()){
+                if(username_.getText().equals(rs.getString("username")) && password_.getText().equals(rs.getString("password"))){
+                    JOptionPane.showMessageDialog(null, "berhasil login");
+                }
+            }else{
+                    JOptionPane.showMessageDialog(null, "username atau password salah");
+                }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_login_ActionPerformed
 
     private void event_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_event_ActionPerformed
