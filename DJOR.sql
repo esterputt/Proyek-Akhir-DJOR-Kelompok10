@@ -1,7 +1,7 @@
 CREATE DATABASE DJOR;
 
-CREATE TABLE login (
-username VARCHAR(50) NOT NULL, 
+CREATE TABLE login_petugas (
+username VARCHAR(50) NOT NULL,
 passwordd VARCHAR(50) NOT NULL);
 
 CREATE TABLE transaksi(
