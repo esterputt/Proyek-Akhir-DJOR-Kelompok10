@@ -1,26 +1,24 @@
 
 package djorapp;
-import java.sql.*;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 /**
  *
  * @author User
  */
 public class Koneksi {
+    
     public static void main(String[] args) {
         try {
-    Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-    Connection conn = null;
-    conn =  DriverManager.getConnection("jdbc:mysql://127.0.0.1/djor?" +
-                "user=root&password=123456789");
-} catch (SQLException e) {
+    Class.forName("org.mariadb.jdbc.Driver").newInstance();
+    Connection conn;
+    String url = "jdbc:mariadb://localhost/djor?user=root&password=123456789";
+    conn =  DriverManager.getConnection(url);
+} catch (Exception e) {
     System.out.println("SQL Exception: "+ e.toString());
-} catch (ClassNotFoundException cE) {
-    System.out.println("Class Not Found Exception: "+ cE.toString());
-} catch (Exception ex) {
-    System.out.println("Exception: "+ ex.toString());
-}
+}  
     }
+    
     
 }

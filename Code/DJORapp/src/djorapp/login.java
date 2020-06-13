@@ -135,7 +135,7 @@ public class login extends javax.swing.JFrame {
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
         try {
-            sql = "SELECT * FROM login_petugas WHERE username='"+username_.getText()+"' AND password='"+password_.getText()+"'";
+            sql = "SELECT *  login";
             rs = stat.executeQuery(sql);
             
             int baris = 0;
@@ -144,8 +144,9 @@ public class login extends javax.swing.JFrame {
             }
             
             if(baris==1){
-                if(username_.getText().equals(rs.getString("username")) && password_.getText().equals(rs.getString("password"))){
+                if(username_.getText().equals(rs.getString("username")) && password_.getText().equals(rs.getString("passwordd"))){
                     javax.swing.JOptionPane.showMessageDialog(null, "berhasil login");
+                    new pendataan().setVisible(true);
                 }
             }else{
                     javax.swing.JOptionPane.showMessageDialog(null, "gagal login");
