@@ -1,21 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package djorapp;
 
+package djorapp;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 /**
  *
  * @author User
  */
 public class pendataan extends javax.swing.JFrame {
 
-    /**
-     * Creates new form pendataan
-     */
+    
     public pendataan() {
         initComponents();
+        
+        Dimension layar = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = layar.width / 2  - this.getSize().width / 2;
+        int y = layar.height / 2 - this.getSize().height / 2;
+
+        this.setLocation(x, y);
     }
 
     /**
@@ -86,11 +87,12 @@ public class pendataan extends javax.swing.JFrame {
 
     private void btn_masukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_masukActionPerformed
         // TODO add your handling code here:
-        new Masuk().setVisible(true);
+       new Masuk().setVisible(true); 
     }//GEN-LAST:event_btn_masukActionPerformed
 
     private void btn_keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_keluarActionPerformed
         // TODO add your handling code here:
+        new Masuk().setVisible(true);
     }//GEN-LAST:event_btn_keluarActionPerformed
 
     /**

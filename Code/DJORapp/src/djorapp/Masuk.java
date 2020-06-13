@@ -14,11 +14,15 @@ import java.awt.Toolkit;
  */
 public class Masuk extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Masuk
-     */
+ 
     public Masuk() {
         initComponents();
+        
+        Dimension layar = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = layar.width / 2  - this.getSize().width / 2;
+        int y = layar.height / 2 - this.getSize().height / 2;
+
+        this.setLocation(x, y);
     }
 
     /**
