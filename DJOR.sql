@@ -32,6 +32,13 @@ CONSTRAINT fk_transaksi_lokasi
 	ON UPDATE RESTRICT
 )
 
+CREATE TABLE ParkirMasuk
+no_polisi INT PRIMARY KEY,
+jenis_kendaraan SET, 
+lokasi_parkir CHAR,
+
+DROP TABLE ParkirMasuk
+
 CREATE TABLE jenis_kendaraan( 
 jenis INT PRIMARY KEY,
 nama_kendaraan VARCHAR(30)) 
