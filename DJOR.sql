@@ -1,10 +1,11 @@
 
 CREATE TABLE login (
+nama_petugas VARCHAR(50) NOT NULL,
 username VARCHAR(50) NOT NULL, 
 passwordd VARCHAR(50) NOT NULL);
 
-INSERT INTO login(username, passwordd) VALUES ('grace.pjtn', 'grace1990');
-INSERT INTO login(username, passwordd) VALUES ('djorrr', '123456789');
+INSERT INTO login(nama_petugas, username, passwordd) VALUES ('Grace Panjaitan', 'grace.pjtn', 'grace1990');
+INSERT INTO login(nama_petugas, username, passwordd) VALUES ('Pemarkir DJOR', 'djorrr', '123456789');
 SELECT * FROM login WHERE username='grace.pjtn';
 
 CREATE TABLE transaksi(
@@ -13,7 +14,6 @@ tgl_parkir DATE,
 waktu_mulai, waktu_selesai TIME,
 lama_parkir INT,
 biaya_parkir LONG INT,
-
 jeniskendaraan INT,
 nomorslot INT,
 slot_parkir CHAR,
@@ -24,7 +24,7 @@ CONSTRAINT 'fk_jenis_transaksi'
 	ON UPDATE RESTRICT
 	
 CONSTRAINT 'fk_transaksi_lokasi'
-	FOREIGN KEY (nomorslot, slot_parkir) REFERENCE lokasi_parkir(nomor_slot,slot)
+	FOREIGN KEY (nomorslot) REFERENCE lokasi_parkir(nomor_slot)
 	ON DELETE CASCADE
 	ON UPDATE RESTRICT
 
@@ -37,7 +37,6 @@ nama_kendaraan VARCHAR(30))
 DROP TABLE jenis_kendaraan
 
 CREATE TABLE lokasi_parkir(
-slot CHAR,
 nomor_slot INT,
 status_slot BOOLEAN,
 lokasi_parkir_pk PRIMARY KEY (slot, nomor_slot));
